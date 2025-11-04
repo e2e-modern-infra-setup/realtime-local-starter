@@ -1,2 +1,3 @@
-/gitops/ @org/platform
-/security/ @org/platform
+/gitops/ @e2e-modern-infra-setup/platform
+/security/ @e2e-modern-infra-setup/platform
+/apps/ @e2e-modern-infra-setup/platform
