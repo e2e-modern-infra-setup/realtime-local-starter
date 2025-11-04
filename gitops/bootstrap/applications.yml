@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: realtime-dev
+  namespace: argocd
+spec:
+  project: realtime
+  source:
+    repoURL: https://github.com/e2e-modern-infra-setup/realtime-local-starter
+    targetRevision: main
+    path: gitops/k8s/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: realtime-prod
+  namespace: argocd
+spec:
+  project: realtime
+  source:
+    repoURL: https://github.com/e2e-modern-infra-setup/realtime-local-starter
+    targetRevision: main
+    path: gitops/k8s/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps-prod

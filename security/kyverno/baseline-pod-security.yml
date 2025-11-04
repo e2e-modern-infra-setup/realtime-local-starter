@@ -1,0 +1,15 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata: { name: baseline-pod-security }
+spec:
+  validationFailureAction: Enforce
+  rules:
+  - name: non-root
+    match: { resources: { kinds: ["Pod","Deployment"] } }
+    validate:
+      pattern:
+        spec:
+          template:
+            spec:
+              securityContext:
+                runAsNonRoot: true

@@ -1,0 +1,5 @@
+resources:
+  - ../../../base/api-deploy.yaml
+images:
+  - name: registry.platform.svc.cluster.local:5000/realtime/api
+    newTag: "0.1.0"
